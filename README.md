@@ -21,7 +21,7 @@ Support for Meteorite should already exist, therefore you can delete the package
 
 ### Post-PhaserIO
 
-If all goes as planned, you should be able to start the app by running `meteor` from the base directory. If not, double-check that the `coffeescript`, `underscore`, and `jquery` packages have been added. This SHOULD have happened automagically, but who knows what computers actually do when you're not looking.
+If all goes as planned, you should be able to start the app by running `meteor` from the base directory. If not, double-check that the `coffeescript`, `lodash`, and `jquery` packages have been added. This SHOULD have happened automagically, but who knows what computers actually do when you're not looking.
 
 ## Dependencies
 
@@ -29,7 +29,7 @@ Meteor uses
 
 - CoffeeScript
 - [PhaserIO](https://github.com/thinkong/meteor-phaser/)
-- Underscore
+- Lo-Dash
 - jQuery
 
 **Warning:** The packages `autopublish` and `insecure` are still active. Don't forget to remove them when going into production.

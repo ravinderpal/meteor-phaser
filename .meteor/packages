@@ -8,6 +8,6 @@ autopublish
 insecure
 phaserio
 coffeescript
-underscore
 bootstrap
 jquery
+lodash
