@@ -15,6 +15,8 @@ You need the [PhaserIO](https://github.com/thinkong/meteor-phaser/) package from
 	- It will now download the latest Phaser to the `phaserio` folder.
 4. Once finished, run `meteor add phaserio`
 
+**Important:** The [Lo-Dash](https://github.com/alethes/meteor-lodash/) dependency works exactly like PhaserIO, but you don't have to use it. Instead run `meteor remove lodash` to remove it. You can get `underscore` instead if you wish, it's part of the Meteor packages and requires no setup.
+
 ### Non-Windows
 
 Support for Meteorite should already exist, therefore you can delete the packages folder and `mrt add phaserio`. Otherwise, follow the steps for Windows and you should be fine.
@@ -25,11 +27,11 @@ If all goes as planned, you should be able to start the app by running `meteor` 
 
 ## Dependencies
 
-Meteor uses
+meteor-phaser uses
 
 - CoffeeScript
 - [PhaserIO](https://github.com/thinkong/meteor-phaser/)
-- Lo-Dash
+- [Lo-Dash](https://github.com/alethes/meteor-lodash/)
 - jQuery
 
 **Warning:** The packages `autopublish` and `insecure` are still active. Don't forget to remove them when going into production.
@@ -70,14 +72,16 @@ Let's take a look at `phaser-meteor.html` It defines the rough site layout and h
 	{{> header}}
 
 	{{> game}}
+
+	{{> footer}}
 </body>
 ~~~
 
-The header template is not interesting at the moment, and the code is straightforward, so let's skip to the game template.
+The header template is not interesting at the moment, and the code is straightforward, so let's skip to the game template. It has an id instead of a class because it will serve as the parent for the canvas.
 
 ~~~HTML
 <template name="game">
-	<div class="game">
+	<div id="game">
 		{{game}}
 	</div>
 </template>
@@ -87,7 +91,7 @@ The header template is not interesting at the moment, and the code is straightfo
 
 ~~~CoffeeScript
 Template.game.game = ->
-	game = new Phaser.Game(800, 600, Phaser.AUTO)
+	game = new Phaser.Game(800, 600, Phaser.AUTO, "game")
 	game.state.add "Boot", new BootState, false
 	game.state.add "Preloader", new PreloaderState, false
 	game.state.add "MainMenu", new MainMenuState, false
@@ -96,6 +100,38 @@ Template.game.game = ->
 	game.state.start "Boot"
 
 	return
+~~~
+
+**Aside:** I'm an HTML and CSS noob, there's no other way of putting it. I did, however, manage to center all of the elements and you can review or throw away the code here:
+
+~~~CSS
+.centered {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px;
+	text-align: center;
+}
+
+canvas {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 800px;
+}
+
+.footer {
+	width: 800px;
+}
+
+.footer pre {
+	margin-left: 0;
+	margin-right: 0;
+	text-align: left;
+}
 ~~~
 
 ## Ending Remarks
