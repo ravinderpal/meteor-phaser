@@ -3,6 +3,26 @@ meteor-phaser
 
 Project skeleton for developing Phaser games with Meteor.
 
+## How to use
+
+### Windows
+
+You need the [PhaserIO](https://github.com/thinkong/meteor-phaser/) package from Atmosphere. Follow these steps:
+
+1. Clone the [PhaserIO](https://github.com/thinkong/meteor-phaser/) project from github into the `packages` folder.
+2. Rename the folder from `meteor-phaser` to `phaserio`
+3. Go inside the `phaserio` folder and run `git submodule update --init`.
+	- It will now download the latest Phaser to the `phaserio` folder.
+4. Once finished, run `meteor add phaserio`
+
+### Non-Windows
+
+Support for Meteorite should already exist, therefore you can delete the packages folder and `mrt add phaserio`. Otherwise, follow the steps for Windows and you should be fine.
+
+### Post-PhaserIO
+
+If all goes as planned, you should be able to start the app by running `meteor` from the base directory. If not, double-check that the `coffeescript`, `underscore`, and `jquery` packages have been added. This SHOULD have happened automagically, but who knows what computers actually do when you're not looking.
+
 ## Dependencies
 
 Meteor uses
@@ -13,16 +33,6 @@ Meteor uses
 - jQuery
 
 **Warning:** The packages `autopublish` and `insecure` are still active. Don't forget to remove them when going into production.
-
-## How to use
-
-### Windows
-
-I packaged the Atmosphere package **PhaserIO** into the folder `packages`. This should run without a problem, just call it with `meteor add phaserio`.
-
-### Non-Windows
-
-Support for Meteorite should already exist, therefore you can delete the packages folder and `mrt add phaserio`.
 
 ## Project Layout
 
@@ -91,5 +101,7 @@ Template.game.game = ->
 ## Ending Remarks
 
 If you want, you can install an HTML templating engine such as Jade that works with Handlebars. The [Atmosphere](https://atmospherejs.com) plugin page for Meteor and Meteorite has [just such a plugin](https://atmospherejs.com/package/jade-handlebars). Stylus, Less and SASS should be supported by Meteor directly, see `meteor list`.
+
+For how I knew how to install Meteorite packages under windows, see [this helpful post by Tom Coleman](https://www.discovermeteor.com/blog/using-meteor-and-atmopshere-on-windows/).
 
 For any remarks, criticisms or suggestions, feel free to email me at `christian.broomfield@posteo.de`
